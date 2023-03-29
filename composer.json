@@ -1,5 +1,5 @@
 {
-	"name": "philippfrenzel/yii2fullcalendarscheduler",
+	"name": "yetopen/yii2fullcalendarscheduler",
 	"description": "Yii2 fullcalendar Widgets",
 	"keywords": ["yii2", "fullcalendar scheduler"],
 	"homepage": "http://www.frenzel.net/",
@@ -11,10 +11,14 @@
 			"email": "philipp@frenzel.net",
 			"homepage": "http://www.frenzel.net/",
 			"role": "Developer"
+		},
+		{
+			"name": "Lorenzo Milesi",
+			"email": "maxxer@yetopen.com"
 		}
 	],
 	"support": {
-		"source": "https://github.com/philippfrenzel/yii2fullcalendar-scheduler"
+		"source": "https://github.com/yetopen/yii2fullcalendar-scheduler"
 	},
 	"minimum-stability": "stable",
 	"require": {
