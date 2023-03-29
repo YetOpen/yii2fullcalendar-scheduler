@@ -55,7 +55,7 @@ class yii2fullcalendarscheduler extends elWidget
     public $headerToolbar = [
         'center' => 'title',
         'left' => 'prev,next today',
-        'right' => 'month,agendaWeek'
+        'right' => 'timeGridWeek,dayGridMonth'
     ];
 
     /**
