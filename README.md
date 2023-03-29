@@ -1,43 +1,29 @@
-yii2fullcalendarscheduler
-================
-JQuery Fullcalendar Scheduler Yii2 Extension
-JQuery from: http://arshaw.com/fullcalendar/
-Version 2.1.1
-License pls. check http://fullcalendar.io/scheduler/download/
+# yii2fullcalendarscheduler
 
-JQuery Documentation:
-http://arshaw.com/fullcalendar/docs/
-Yii2 Extension by <philipp@frenzel.net>
+Embed [fullcalendar](https://fullcalendar.io) as Yii2 widget
+Version 6.0.0-ALPHA
+Check usage license at [fullcalendar.io](https://fullcalendar.io/license).
 
-A tiny sample can be found here:
-http://yii2fullcalendar.beeye.org
+Yii2 Extension by <philipp@frenzel.net>, updated for v6 by YetOpen.
 
-[![Latest Stable Version](https://poser.pugx.org/philippfrenzel/yii2fullcalendar-scheduler/v/stable.svg)](https://packagist.org/packages/philippfrenzel/yii2fullcalendarscheduler)
-[![Build Status](https://travis-ci.org/philippfrenzel/yii2fullcalendar-scheduler.svg?branch=master)](https://travis-ci.org/philippfrenzel/yii2fullcalendar-scheduler)
-[![Code Climate](https://codeclimate.com/github/philippfrenzel/yii2fullcalendar-scheduler.png)](https://codeclimate.com/github/philippfrenzel/yii2fullcalendar-scheduler)
-[![Version Eye](https://www.versioneye.com/php/philippfrenzel:yii2fullcalendarscheduler/badge.svg)](https://www.versioneye.com/php/philippfrenzel:yii2fullcalendarscheduler)
-[![License](https://poser.pugx.org/philippfrenzel/yii2fullcalendarscheduler/license.svg)](https://packagist.org/packages/philippfrenzel/yii2fullcalendar-scheduler)
+## Installation
 
-Installation
-============
 Package is although registered at packagist.org - so you can just add one line of code, to let it run!
 
-add the following line to your composer.json require section:
+add the following line to your `composer.json` require section:
 ```json
-  "philippfrenzel/yii2fullcalendarscheduler":"*",
+  "yetopen/yii2fullcalendarscheduler":"*",
 ```
 
 And ensure, that you have the follwing plugin installed global:
 
 > php composer.phar global require "fxp/composer-asset-plugin:~1.1"
 
-Changelog
----------
+## Changelog
 
-29-11-2014 Updated to latest 2.2.3 Version of the library
+2023.03.29 Forked for v6.1.5
 
-Usage
-=====
+## Usage
 
 Quickstart Looks like this:
 
@@ -57,17 +43,14 @@ Quickstart Looks like this:
   $Event->start = date('Y-m-d\TH:m:s\Z',strtotime('tomorrow 6am'));
   $events[] = $Event;
 
-  ?>
-  
-  <?= \yii2fullcalendarscheduler\yii2fullcalendarscheduler::widget(array(
+  echo \yii2fullcalendarscheduler\yii2fullcalendarscheduler::widget(array(
       'events'=> $events,
   ));
 ```
 
 Note, that this will only view the events without any detailed view or option to add a new event.. etc.
 
-AJAX Usage
-==========
+## AJAX Usage
 If you wanna use ajax loader, this could look like this:
 
 ```php
@@ -93,7 +76,6 @@ public function actionJsoncalendar($start=NULL,$end=NULL,$_=NULL){
     $events = array();
 
     foreach ($times AS $time){
-      //Testing
       $Event = new \yii2fullcalendarscheduler\models\Event();
       $Event->id = $time->id;
       $Event->title = $time->categoryAsString;

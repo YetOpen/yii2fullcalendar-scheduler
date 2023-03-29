@@ -11,19 +11,24 @@ class Event extends Model
    * Detailed description off all fields can be found here
    * @url http://arshaw.com/fullcalendar/docs/event_data/Event_Object/
    */
-  
+
   /**
    * the id of the shown event
    * @var integer
    */
   public $id;
 
+  /**
+   * the id of the resource
+   * @var integer
+   */
+  public $resourceId;
 
-    /**
-     * the id of the resource
-     * @var integer
-     */
-    public $resourceId;
+  /**
+   * Events that share a `groupId` will be dragged and resized together automatically
+   * @var integer|string
+   */
+  public $groupId;
 
   /**
    * The text on an event's element
@@ -39,14 +44,14 @@ class Event extends Model
    * @var boolean
    */
   public $allDay;
-  
+
   /**
    * The date/time an event begins. Required.
    * A Moment-ish input, like an ISO8601 string. Throughout the API this will become a real Moment object.
    * @var datetime
    */
   public $start;
-  
+
   /**
    * The exclusive date/time an event ends. Optional.
    * A Moment-ish input, like an ISO8601 string. Throughout the API this will become a real Moment object.
@@ -54,61 +59,61 @@ class Event extends Model
    * @var datetime
    */
   public $end;
-  
+
   /**
    * A URL that will be visited when this event is clicked by the user. For more information on controlling this behavior, see the eventClick callback.
    * @var [type]
    */
   public $url;
-  
+
   /**
    * A CSS class (or array of classes) that will be attached to this event's element.
    * @var [type]
    */
   public $className;
-  
+
   /**
    * Overrides the master editable option for this single event.
    * @var boolean
    */
   public $editable;
-  
+
   /**
    * Overrides the master eventStartEditable option for this single event.
    * @var [type]
    */
   public $startEditable;
-  
+
   /**
    * Overrides the master eventDurationEditable option for this single event.
    * @var [type]
    */
   public $durationEditable;
-  
+
   /**
    * A reference to the event source that this event came from.
    * @var [type]
    */
   public $source;
-  
+
   /**
    * Sets an event's background and border color just like the calendar-wide eventColor option.
    * @var [type]
    */
   public $color;
-  
+
   /**
    * Sets an event's background color just like the calendar-wide eventBackgroundColor option.
    * @var [type]
    */
   public $backgroundColor;
-  
+
   /**
    * Sets an event's border color just like the the calendar-wide eventBorderColor option.
    * @var [type]
    */
   public $borderColor;
-  
+
   /**
    * Sets an event's text color just like the calendar-wide eventTextColor option.
    * @var [type]
@@ -123,5 +128,4 @@ class Event extends Model
       ['editable, startEditable, durationEditable', 'boolean'],
     ];
   }
-
 }

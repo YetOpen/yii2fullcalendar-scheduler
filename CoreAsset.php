@@ -7,7 +7,7 @@ use yii\web\AssetBundle;
 
 /**
  * @link http://www.frenzel.net/
- * @author Philipp Frenzel <philipp@frenzel.net> 
+ * @author Philipp Frenzel <philipp@frenzel.net>
  */
 
 class CoreAsset extends AssetBundle
@@ -16,7 +16,7 @@ class CoreAsset extends AssetBundle
      * [$sourcePath description]
      * @var string
      */
-    public $sourcePath = '@bower';
+    public $sourcePath = '@bower/fullcalendar-scheduler';
 
     /**
      * the language the calender will be displayed in
@@ -32,61 +32,26 @@ class CoreAsset extends AssetBundle
 
     /**
      * tell the calendar, if you like to render google calendar events within the view
+     * @todo To be implemented in v6
      * @var boolean
      */
     public $googleCalendar = false;
-    
-    /**
-     * [$css description]
-     * @var array
-     */
-    public $css = [
-        'fullcalendar/dist/fullcalendar.css',
-        'fullcalendar-scheduler/dist/scheduler.css',
-    ];
 
     /**
-     * [$js description]
      * @var array
      */
     public $js = [
-        'fullcalendar/dist/fullcalendar.js',        
-        'fullcalendar/dist/locale-all.js',
-        'fullcalendar-scheduler/dist/scheduler.js',
-    ];
-    
-    /**
-     * [$depends description]
-     * @var array
-     */
-    public $depends = [
-        'yii\web\YiiAsset',
-        'yii2fullcalendarscheduler\MomentAsset',
-        'yii2fullcalendarscheduler\PrintAsset'
+        // Temporary loading with CDN as bower+composer is driving me MAD!
+        'https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5/index.global.min.js',
     ];
 
-    /**
-     * @inheritdoc
-     */
-    public function registerAssetFiles($view)
+    public function init()
     {
-        $language = $this->language ? $this->language : Yii::$app->language;
-        if ($language != 'en-us') 
-        {
-            if (file_exists(Yii::getAlias($this->sourcePath."/"."fullcalendar/dist/locale/{$language}.js"))) {
-                $this->js[] = "fullcalendar/dist/locale/{$language}.js";
-            } else {
-                // try shorter version of locale
-                $this->js[] = "fullcalendar/dist/locale/".substr($language, 0, 2).".js";
+        // Serve unminified files when YII_DEBUG
+        if (YII_DEBUG) {
+            foreach ($this->js as $jsk => $jsfile) {
+                $this->js[$jsk] = str_replace(".min", "", $jsfile);
             }
         }
-
-        if($this->googleCalendar)
-        {
-            $this->js[] = 'fullcalendar/dist/gcal.js';
-        }
-
-        parent::registerAssetFiles($view);
     }
-
 }
