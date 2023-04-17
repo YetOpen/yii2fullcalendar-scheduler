@@ -1,5 +1,8 @@
 yii2fullcalendarscheduler
 ================
+
+**This project is deprecated, use [yii2fullcalendar](https://github.com/YetOpen/yii2fullcalendar/) which implements Fullcalendar v6.**
+
 JQuery Fullcalendar Scheduler Yii2 Extension
 JQuery from: http://arshaw.com/fullcalendar/
 Version 2.1.1
